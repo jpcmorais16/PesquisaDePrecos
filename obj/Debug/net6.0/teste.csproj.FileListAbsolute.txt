@@ -1,0 +1,5 @@
+C:\Users\Trilogo\Desktop\Pesquisa\teste\obj\Debug\net6.0\teste.csproj.AssemblyReference.cache
+C:\Users\Trilogo\Desktop\Pesquisa\teste\obj\Debug\net6.0\teste.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Trilogo\Desktop\Pesquisa\teste\obj\Debug\net6.0\teste.AssemblyInfoInputs.cache
+C:\Users\Trilogo\Desktop\Pesquisa\teste\obj\Debug\net6.0\teste.AssemblyInfo.cs
+C:\Users\Trilogo\Desktop\Pesquisa\teste\obj\Debug\net6.0\teste.csproj.CoreCompileInputs.cache
