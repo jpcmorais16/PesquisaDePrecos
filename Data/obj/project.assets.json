@@ -53,8 +53,8 @@
     },
     "Domain/1.0.0": {
       "type": "project",
-      "path": "../domain/Domain.csproj",
-      "msbuildProject": "../domain/Domain.csproj"
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -69,11 +69,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\Trilogo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\Data\\obj\\",
+      "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Trilogo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\domain\\Domain.csproj"
+            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hC+UTzHN0Icqwr4Yd5PK7FkrRtXb+qyLMr33tCPU39r8Mpy/tqAM0e0Q75Hjcst49Rn2LY5bsfJprOH0D8kOgA==",
+  "dgSpecHash": "CV3QUIRW/IFI/cRqruaD2hKk5bjQHFT97wojqgfwgqY3l4u33v/JDzZT9nGovrJEOuzSecbjt8itrWRKm/+0kg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trilogo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

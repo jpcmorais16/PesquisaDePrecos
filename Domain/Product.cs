@@ -11,9 +11,10 @@ namespace Domain
     {
         [Key]
         public int pk { get; set; } 
+        public string full_display { get; set; }
         public string category { get; set;}
         public Price price { get; set; }
-        public PriceStatistics priceStatistics { get; set; }  
+        public PriceStatistics price_statistics { get; set; }  
         public string name { get; set; }
 
         public int CompareTo(object? obj)
@@ -21,7 +22,7 @@ namespace Domain
             if (obj == null) return -1;
             Product product = obj as Product;
 
-            return Convert.ToDouble(this.price.getPrice()) < Convert.ToDouble(product.price.price) ? -1 : 1;
+            return Convert.ToDouble(this.price.getPrice()) < Convert.ToDouble(product.price.getPrice()) ? -1 : 1;
         }
     }
 }

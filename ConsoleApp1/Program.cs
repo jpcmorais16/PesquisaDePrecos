@@ -1,10 +1,12 @@
-﻿using Data;
+﻿using Services;
+using Data;
 
-var query = new AtacadaoItemQuery();
+var service = new SearchService(new ConnectorFactory());
 
-var result = await query.SearchProducts(new List<string> { "suco", "500ml" });
+var result = await service.SearchItemsInAllConnectionsWithWordRestrictions(new List<string> { "suco", "500ml" }, new List<string> { "concentrado"});
+
 
 foreach (var item in result)
 {
-    Console.WriteLine(item.name, item.price.getPrice());
+    Console.WriteLine(item.full_display + " " + item.price.getPrice().ToString());
 }

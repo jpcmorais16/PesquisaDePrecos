@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\domain\\domain.csproj",
-      "projectName": "domain",
-      "projectPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\domain\\domain.csproj",
+      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\domain\\Domain.csproj",
+      "projectName": "Domain",
+      "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Trilogo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\domain\\obj\\",
+      "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Trilogo\\AppData\\Roaming\\NuGet\\NuGet.Config",
