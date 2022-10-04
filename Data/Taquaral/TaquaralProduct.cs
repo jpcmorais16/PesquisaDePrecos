@@ -25,7 +25,8 @@ namespace Data.Taquaral
             {
                 Name = excerpt,
                 Price = prices[0].price,
-                HasDiscount = discount != null && discount.value != 0
+                HasDiscount = discount != null && discount.value != 0,
+                DomainName = "Taquaral"
 
             };
         }

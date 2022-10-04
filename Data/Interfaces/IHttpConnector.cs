@@ -11,5 +11,6 @@ namespace Data.Interfaces
     public interface IHttpConnector
     {
         public Task<List<Product>> SearchProducts(List<string> searchTerms);
+        public string GetName();
     }
 }

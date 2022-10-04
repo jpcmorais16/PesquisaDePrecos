@@ -14,6 +14,12 @@ namespace Data.Taquaral
 
         private HttpClient _httpClient = new HttpClient();
         private string _baseLink = "https://www.sitemercado.com.br/api/b2c/product?store_id=628&text=";
+
+        public string GetName()
+        {
+            return "Taquaral";
+        }
+
         public async Task<List<Product>> SearchProducts(List<string> searchTerms)
         {
             string search = _baseLink + CreateQuery(searchTerms);

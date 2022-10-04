@@ -14,6 +14,11 @@ namespace Data.Atacadao
         public HttpClient _httpClient = new HttpClient();
         public string _baseLink = "https://www.atacadao.com.br/catalogo/search/?";
 
+        public string GetName()
+        {
+            return "Atacadao";
+        }
+
         public async Task<List<Product>> SearchProducts(List<string> searchTerms)
         {
 

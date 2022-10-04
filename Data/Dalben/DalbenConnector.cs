@@ -73,6 +73,11 @@ namespace Data.Dalben
             return result.Data;
 
         }
+
+        public string GetName()
+        {
+            return "Dalben";
+        }
     }
     public class AuthResponse
     {

@@ -24,16 +24,31 @@ namespace Services
 
             foreach (IHttpConnector connector in connectorList)
             {
-                var products = await connector.SearchProducts(searchTerms);
+                
 
-                if (products != null)
+                try
                 {
+                    var products = await connector.SearchProducts(searchTerms);
+
+                    if (products.Count == 0) throw new Exception();
+
                     var resposta = products.Where(p => !p.HasDiscount &&
                     searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+
+                    if (resposta.Count == 0) throw new Exception();
 
                     resposta.Sort();
 
                     return resposta;
+                }
+                catch(Exception ex)
+                {
+                    var busca = "";
+                    foreach(string term in searchTerms)
+                    {
+                        busca += $"{term} ";
+                    }
+                    Console.WriteLine($"Nenhum resultado encontrado para {busca} na conexao com {connector.GetName()}");
                 }
 
             }
@@ -49,19 +64,31 @@ namespace Services
 
             foreach (IHttpConnector connector in connectorList)
             {
-                var products = await connector.SearchProducts(searchTerms);
 
-                if (products != null)
+
+                try
                 {
+                    var products = await connector.SearchProducts(searchTerms);
+
+                    if (products.Count == 0) throw new Exception();
+
                     var resposta = products.Where(p => !p.HasDiscount &&
                     searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
 
-                    resposta = resposta.Where(p =>
-                    !restrictions.Any(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    if (resposta.Count == 0) throw new Exception();
 
                     resposta.Sort();
 
                     return resposta;
+                }
+                catch (Exception ex)
+                {
+                    var busca = "";
+                    foreach (string term in searchTerms)
+                    {
+                        busca += $"{term} ";
+                    }
+                    Console.WriteLine($"Nenhum resultado encontrado para {busca} na conexao com {connector.GetName()}");
                 }
 
             }

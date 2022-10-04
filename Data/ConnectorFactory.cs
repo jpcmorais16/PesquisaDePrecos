@@ -16,12 +16,11 @@ namespace Data
 
         private List<IHttpConnector> _connectorList = new List<IHttpConnector>
         {
+            new EnxutoConnector(),
             new TaquaralConnector(),
             new DalbenConnector(),
-            new AtacadaoConnector(),
-            new EnxutoConnector()
+            new AtacadaoConnector()
             
-
         };
 
         public ConnectorFactory(){}

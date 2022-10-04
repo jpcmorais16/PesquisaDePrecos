@@ -12,6 +12,7 @@ namespace Domain
         public string Name { get; set; }
         public double Price { get; set; }
         public bool HasDiscount { get; set; }
+        public string DomainName { get; set; }
         public int CompareTo(object? obj)
         {
             if (obj == null) return -1;

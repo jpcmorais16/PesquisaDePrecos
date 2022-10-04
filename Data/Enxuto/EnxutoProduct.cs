@@ -1,18 +1,18 @@
 ﻿using Domain;
 using Domain.Interfaces;
 
-namespace Data.Dalben
+namespace Data.Enxuto
 {
-    public class DalbenProduct : IProduct
+    public class EnxutoProduct: IProduct
     {
-        public double preco { get; set; }   
+        public double preco { get; set; }
         public string descricao { get; set; }
         public bool em_oferta { get; set; }
 
         public int CompareTo(object? obj)
         {
             if (obj == null) return -1;
-            DalbenProduct product = obj as DalbenProduct;
+            EnxutoProduct product = obj as EnxutoProduct;
 
             return preco < preco ? -1 : 1;
         }
@@ -29,7 +29,7 @@ namespace Data.Dalben
                 Name = descricao,
                 Price = preco,
                 HasDiscount = em_oferta,
-                DomainName = "Dalben"
+                DomainName = "Enxuto"
             };
         }
     }

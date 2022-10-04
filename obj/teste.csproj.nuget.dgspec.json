@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\teste.csproj": {}
+    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\teste.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\teste.csproj": {
+    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\teste.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\teste.csproj",
+        "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\teste.csproj",
         "projectName": "teste",
-        "projectPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\teste.csproj",
+        "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\teste.csproj",
         "packagesPath": "C:\\Users\\Trilogo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trilogo\\Desktop\\Pesquisa\\obj\\",
+        "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Trilogo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,11 +27,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\Trilogo\\Desktop\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\Trilogo\\Desktop\\Data\\Data.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
