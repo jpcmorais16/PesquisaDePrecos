@@ -1,4 +1,8 @@
-﻿using Data.Interfaces;
+﻿using Data.Atacadao;
+using Data.Dalben;
+using Data.Enxuto;
+using Data.Interfaces;
+using Data.Taquaral;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +14,16 @@ namespace Data
     public class ConnectorFactory: IConnectorFactory
     {
 
-        private List<IHttpConnector> _connectorList = new List<IHttpConnector>();
-        private int _connectorIndex = 0;
-
-        public ConnectorFactory()
+        private List<IHttpConnector> _connectorList = new List<IHttpConnector>
         {
-            _connectorList.Add(new AtacadaoConnector());
-        }
+            new DalbenConnector(),
+            new AtacadaoConnector(),
+            new EnxutoConnector(),
+            new TaquaralConnector()
+
+        };
+
+        public ConnectorFactory(){}
 
         public List<IHttpConnector> GetConnectors()
         {

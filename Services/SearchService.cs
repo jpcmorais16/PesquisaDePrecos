@@ -24,12 +24,12 @@ namespace Services
 
             foreach (IHttpConnector connector in connectorList)
             {
-                var response = await connector.SearchProducts(searchTerms);
+                var products = await connector.SearchProducts(searchTerms);
 
-                if (response != null)
+                if (products != null)
                 {
-                    var resposta = response.results.Where(p => p.price_statistics.Cheaper.Discount == 0 &&
-                    searchTerms.All(t => p.full_display.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    var resposta = products.Where(p => !p.HasDiscount &&
+                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
 
                     resposta.Sort();
 
@@ -49,15 +49,15 @@ namespace Services
 
             foreach (IHttpConnector connector in connectorList)
             {
-                var response = await connector.SearchProducts(searchTerms);
+                var products = await connector.SearchProducts(searchTerms);
 
-                if (response != null)
+                if (products != null)
                 {
-                    var resposta = response.results.Where(p => p.price_statistics.Cheaper.Discount == 0 &&
-                    searchTerms.All(t => p.full_display.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    var resposta = products.Where(p => !p.HasDiscount &&
+                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
 
                     resposta = resposta.Where(p =>
-                    !restrictions.Any(t => p.full_display.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    !restrictions.Any(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
 
                     resposta.Sort();
 

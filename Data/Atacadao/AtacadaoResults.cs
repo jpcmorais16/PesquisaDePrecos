@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Data.Atacadao
 {
-    public class Results
+    public class AtacadaoResults
     {
-        public List<Product> products { get; set; }
+        public List<AtacadaoProduct> products { get; set; }
     }
 }

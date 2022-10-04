@@ -3,10 +3,10 @@ using Data;
 
 var service = new SearchService(new ConnectorFactory());
 
-var result = await service.SearchItemsInAllConnectionsWithWordRestrictions(new List<string> { "suco", "500ml" }, new List<string> { "concentrado"});
+var result = await service.SearchItemsInAllConnectionsWithoutRestrictions(new List<string> { "suco", "500ml" });
 
 
 foreach (var item in result)
 {
-    Console.WriteLine(item.full_display + " " + item.price.getPrice().ToString());
+    Console.WriteLine(item.Name + " " + item.Price.ToString());
 }
