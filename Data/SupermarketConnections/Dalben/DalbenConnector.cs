@@ -18,28 +18,43 @@ namespace Data.Dalben
         //df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469
         //username: "loja"
 
+        private string _baseLink = "https://api.superdalben.com.br/v1/loja/buscas/produtos/filial/1/centro_distribuicao/1/termo/";
+        private string _authLink = "https://api.superdalben.com.br/v1/auth/loja/login";
+        private string _key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469";
+        private string _username = "loja";
+        private string _domain = "superdalben.com.br";
+        private List<Product> _lastSearch;
+        private string _lastMainTerm;
 
-        public string _token { get; set; }
-        public HttpClient _httpClient = new HttpClient();
-        public string _baseLink = "https://api.superdalben.com.br/v1/loja/buscas/produtos/filial/1/centro_distribuicao/1/termo/";
-        public string _authLink = "https://api.superdalben.com.br/v1/auth/loja/login";
-        public string _key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469";
-        public string _username = "loja";
-        public string _domain = "superdalben.com.br";
-        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
+        public List<Product> GetLastSearch()
         {
-            string search = _baseLink + CreateQuery(searchTerms);
+            return _lastSearch;
+        }
 
-            var token = await GetTokenAsync();
+        public async Task<List<Product>> SearchProducts(string mainTerm)
+        {
+            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
+                return _lastSearch;
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            HttpClient httpClient = new HttpClient();
 
-            var getResult = await _httpClient.GetStringAsync(search);
+            string searchLink = _baseLink + mainTerm + "?";
+
+            var token = await GetTokenAsync(httpClient);
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var getResult = await httpClient.GetStringAsync(searchLink);
 
             var response = JsonConvert.DeserializeObject<DalbenResponse>(getResult);
 
-            return response.data.produtos.Select(p => p.GetProduct()).ToList();
+            _lastMainTerm = mainTerm;
+            _lastSearch = response.data.produtos.Select(p => p.GetProduct()).ToList();
+
+            return _lastSearch;
+            
         }
+
 
 
         private string CreateQuery(List<string> searchTerms)
@@ -54,10 +69,10 @@ namespace Data.Dalben
             return query;
         }
         
-        private async Task<string> GetTokenAsync()
+        private async Task<string> GetTokenAsync(HttpClient httpClient)
         {
            
-            _httpClient.BaseAddress = new Uri("https://api.superdalben.com.br/");
+            httpClient.BaseAddress = new Uri("https://api.superdalben.com.br/");
 
             var request = new
             {
@@ -66,7 +81,7 @@ namespace Data.Dalben
                 key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469"
             };
 
-            var response = await _httpClient.PostAsJsonAsync("/v1/auth/loja/login", request);
+            var response = await httpClient.PostAsJsonAsync("/v1/auth/loja/login", request);
 
             var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
 

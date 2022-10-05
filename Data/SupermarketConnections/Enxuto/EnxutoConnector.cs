@@ -13,29 +13,41 @@ namespace Data.Enxuto
 {
     public class EnxutoConnector : ISupermarketHttpConnector
     {
-        public string _token { get; set; }
-        public HttpClient _httpClient = new HttpClient();
-        public string _baseLink = "https://api.enxuto.com/v1/loja/buscas/produtos/filial/1/centro_distribuicao/1/termo/";
-        public string _authLink = "https://api.enxuto.com/v1/auth/loja/login";
-        public string _key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469";
-        public string _username = "loja";
-        public string _domain = "enxuto.com";
-        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
+        private string _token { get; set; }
+        private string _baseLink = "https://api.enxuto.com/v1/loja/buscas/produtos/filial/1/centro_distribuicao/1/termo/";
+        private string _authLink = "https://api.enxuto.com/v1/auth/loja/login";
+        private string _key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469";
+        private string _username = "loja";
+        private string _domain = "enxuto.com";
+        private List<Product> _lastSearch;
+        private string _lastMainTerm;
+
+        public List<Product> GetLastSearch()
         {
-            string search = _baseLink + CreateQuery(searchTerms);
+            return _lastSearch;
+        }
+        public async Task<List<Product>> SearchProducts(string mainTerm)
+        {
+            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
+                return _lastSearch;
 
-            var token = await GetTokenAsync();
+            HttpClient httpClient = new HttpClient();
 
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            string search = _baseLink + mainTerm + "?";
 
-            
-            var getResult = await _httpClient.GetStringAsync(search);
+            var token = await GetTokenAsync(httpClient);
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+ 
+            var getResult = await httpClient.GetStringAsync(search);
 
             var response = JsonConvert.DeserializeObject<EnxutoResponse>(getResult);
 
-            return response.data.produtos.Select(p => p.GetProduct()).ToList();
-            
+            _lastMainTerm = mainTerm;
+            _lastSearch =  response.data.produtos.Select(p => p.GetProduct()).ToList();
 
+            return _lastSearch;
+            
             
         }
         private string CreateQuery(List<string> searchTerms)
@@ -50,10 +62,10 @@ namespace Data.Enxuto
             return query;
         }
 
-        private async Task<string> GetTokenAsync()
+        private async Task<string> GetTokenAsync(HttpClient httpClient)
         {
 
-            _httpClient.BaseAddress = new Uri("https://api.enxuto.com/");
+            httpClient.BaseAddress = new Uri("https://api.enxuto.com/");
 
             var request = new
             {
@@ -62,7 +74,7 @@ namespace Data.Enxuto
                 key = "df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469"
             };
 
-            var response = await _httpClient.PostAsJsonAsync("/v1/auth/loja/login", request);
+            var response = await httpClient.PostAsJsonAsync("/v1/auth/loja/login", request);
 
             var result = await response.Content.ReadFromJsonAsync<AuthResponse>();
 

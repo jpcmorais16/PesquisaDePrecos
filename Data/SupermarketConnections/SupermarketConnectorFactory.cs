@@ -15,12 +15,7 @@ namespace Data.SupermarketConnections
     public class SupermarketConnectorFactory : ISupermarketConnectorFactory
     {
 
-        private List<ISupermarketHttpConnector> _connectorList;
-        public SupermarketConnectorFactory() { }
-
-        public List<ISupermarketHttpConnector> GetConnectors()
-        {
-            return new List<ISupermarketHttpConnector>
+        private List<ISupermarketHttpConnector> _connectorList = new List<ISupermarketHttpConnector>
             {
                 new EnxutoConnector(),
                 new TaquaralConnector(),
@@ -28,6 +23,11 @@ namespace Data.SupermarketConnections
                 new AtacadaoConnector()
 
             };
+        public SupermarketConnectorFactory() { }
+
+        public List<ISupermarketHttpConnector> GetConnectors()
+        {
+            return _connectorList;
 
         }
 

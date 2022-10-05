@@ -11,11 +11,11 @@ namespace Services
     public class SpreadsheetService
     {
         public List<List<string>> _spreadsheet { get; set; }
-        public ISheetsConnector _connector = new GoogleSheetsConnector("");
+        public ISheetsConnector _connector = new GoogleSheetsConnector(@"");
 
         public List<List<string>> GetNFirstItemsFromSpreadsheet(int N)
         {
-            string range = "";
+            string range = "Banco de Dados!B5:C640";
             string id = "";
 
             var response = _connector.ReadDataFromSpreadsheet(range, id);

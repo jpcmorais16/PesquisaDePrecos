@@ -12,17 +12,31 @@ namespace Data.Taquaral
     public class TaquaralConnector : ISupermarketHttpConnector
     {
 
-        private HttpClient _httpClient = new HttpClient();
+        
         private string _baseLink = "https://www.sitemercado.com.br/api/b2c/product?store_id=628&text=";
+        private List<Product> _lastSearch;
+        private string _lastMainTerm;
+
+        public List<Product> GetLastSearch()
+        {
+            if (_lastSearch == null) throw new Exception("não há última pesquisa");
+
+            return _lastSearch;
+
+        }
 
         public string GetName()
         {
             return "Taquaral";
         }
 
-        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
+        public async Task<List<Product>> SearchProducts(string mainTerm)
         {
-            string search = _baseLink + CreateQuery(searchTerms);
+            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
+                return _lastSearch;
+
+            HttpClient httpClient = new HttpClient();
+            string search = _baseLink + mainTerm;
 
             var header = new
             {
@@ -36,12 +50,15 @@ namespace Data.Taquaral
 
             var headerJson = JsonConvert.SerializeObject(header);
 
-            _httpClient.DefaultRequestHeaders.Add("sm-token", headerJson);
-            var getResult = await _httpClient.GetStringAsync(search);
+            httpClient.DefaultRequestHeaders.Add("sm-token", headerJson);
+            var getResult = await httpClient.GetStringAsync(search);
 
             var response = JsonConvert.DeserializeObject<TaquaralResponse>(getResult);
 
-            return response.products.Select(p => p.GetProduct()).ToList();
+            _lastMainTerm = mainTerm;
+            _lastSearch =  response.products.Select(p => p.GetProduct()).ToList();
+
+            return _lastSearch;
         }
 
         private string CreateQuery(List<string> searchTerms)

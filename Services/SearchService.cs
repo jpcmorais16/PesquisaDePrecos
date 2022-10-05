@@ -11,6 +11,7 @@ namespace Services
     public class SearchService
     {
         ISupermarketConnectorFactory _connectorFactory;
+        private string _lastMainTerm = "";
 
         public SearchService(ISupermarketConnectorFactory connectorFactory)
         {
@@ -28,7 +29,9 @@ namespace Services
 
                 try
                 {
-                    var products = await connector.SearchProducts(searchTerms);
+                    
+
+                    var products = await connector.SearchProducts(searchTerms[0]);
 
                     products = products.Where(p=> p.Name.ToLower().Split(" ").Contains(searchTerms.First().ToLower())).ToList();
 
@@ -67,7 +70,7 @@ namespace Services
 
                 try
                 {
-                    var products = await connector.SearchProducts(searchTerms);
+                    var products = await connector.SearchProducts(searchTerms[0]);
 
                     if (products.Count == 0) throw new Exception();
 
@@ -107,7 +110,7 @@ namespace Services
 
                 try
                 {
-                    var products = await connector.SearchProducts(searchTerms);
+                    var products = await connector.SearchProducts(searchTerms[0]);
 
                     if (products.Count == 0) throw new Exception();
 

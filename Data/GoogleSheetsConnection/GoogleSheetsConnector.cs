@@ -14,7 +14,7 @@ namespace Data.GoogleSheetsConnection
     public class GoogleSheetsConnector: ISheetsConnector
     {
         private SheetsService _sheetsService;
-        private string _spreadSheetId;
+        private string _spreadSheetId = "";
 
         public GoogleSheetsConnector(string credPath)
         {

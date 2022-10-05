@@ -10,7 +10,8 @@ namespace Data.Interfaces.SupermarketConnections
 {
     public interface ISupermarketHttpConnector
     {
-        public Task<List<Product>> SearchProducts(List<string> searchTerms);
+        public Task<List<Product>> SearchProducts(string mainTerm);
         public string GetName();
+
     }
 }
