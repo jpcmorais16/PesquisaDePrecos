@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Interfaces
 {
-    public interface IConnectorFactory
+    public interface ISheetsConnector
     {
-        public List<IHttpConnector> GetConnectors();
+        public List<List<string>> ReadDataFromSpreadsheet(string range, string spreadsheetId);
     }
 }

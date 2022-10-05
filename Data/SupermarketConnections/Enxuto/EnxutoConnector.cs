@@ -1,4 +1,4 @@
-﻿using Data.Interfaces;
+﻿using Data.Interfaces.SupermarketConnections;
 using Domain;
 using Newtonsoft.Json;
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Data.Enxuto
 {
-    public class EnxutoConnector : IHttpConnector
+    public class EnxutoConnector : ISupermarketHttpConnector
     {
         public string _token { get; set; }
         public HttpClient _httpClient = new HttpClient();

@@ -1,4 +1,4 @@
-﻿using Data.Interfaces;
+﻿using Data.Interfaces.SupermarketConnections;
 using Domain;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Taquaral
 {
-    public class TaquaralConnector : IHttpConnector
+    public class TaquaralConnector : ISupermarketHttpConnector
     {
 
         private HttpClient _httpClient = new HttpClient();

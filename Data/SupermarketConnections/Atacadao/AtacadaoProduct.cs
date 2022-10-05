@@ -20,9 +20,11 @@ namespace Data.Atacadao
         public string name { get; set; }
         public Product GetProduct()
         {
+            var teste = getPrice();
+            var teste2 = Convert.ToDouble(price.price);
             return new Product
             {
-                Price = Convert.ToDouble(getPrice()),
+                Price = Convert.ToDouble(price.price),
                 Name = full_display,
                 HasDiscount = price_statistics.Cheaper.Discount != 0,
                 DomainName = "Atacadao"

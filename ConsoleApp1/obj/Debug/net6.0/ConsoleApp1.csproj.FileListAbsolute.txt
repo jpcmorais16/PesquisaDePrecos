@@ -42,3 +42,8 @@ C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\obj\Debug\net6.0\ConsoleAp
 C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll
 C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Services.dll
 C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Services.pdb
+C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\Trilogo\Desktop\PesquisaDePrecos\ConsoleApp1\bin\Debug\net6.0\Google.Apis.Sheets.v4.dll

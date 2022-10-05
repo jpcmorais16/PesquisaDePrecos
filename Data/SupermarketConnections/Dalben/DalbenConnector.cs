@@ -1,5 +1,4 @@
-﻿using Data.Interfaces;
-using Data.Atacadao;
+﻿using Data.Atacadao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +8,11 @@ using Domain;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
+using Data.Interfaces.SupermarketConnections;
 
 namespace Data.Dalben
 {
-    public class DalbenConnector : IHttpConnector
+    public class DalbenConnector : ISupermarketHttpConnector
     {
         //https://api.superdalben.com.br/v1/auth/loja/login
         //df072f85df9bf7dd71b6811c34bdbaa4f219d98775b56cff9dfa5f8ca1bf8469

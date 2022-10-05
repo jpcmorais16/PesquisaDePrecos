@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "CV3QUIRW/IFI/cRqruaD2hKk5bjQHFT97wojqgfwgqY3l4u33v/JDzZT9nGovrJEOuzSecbjt8itrWRKm/+0kg==",
+  "dgSpecHash": "s4im7+J+A36R+YMOuMaB2KQLuvsfTx4f1kVUzHxZzcs5U/OanMMs+kB3HJSl6Yqd+Du9bWOTKSCI36Qu3cCmTA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis\\1.57.0\\google.apis.1.57.0.nupkg.sha512",
+    "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis.auth\\1.57.0\\google.apis.auth.1.57.0.nupkg.sha512",
+    "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis.core\\1.57.0\\google.apis.core.1.57.0.nupkg.sha512",
+    "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis.sheets.v4\\1.57.0.2826\\google.apis.sheets.v4.1.57.0.2826.nupkg.sha512",
     "C:\\Users\\Trilogo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []

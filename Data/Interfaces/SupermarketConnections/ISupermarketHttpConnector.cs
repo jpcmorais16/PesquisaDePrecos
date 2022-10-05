@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Data.Atacadao;
 using Domain;
 
-namespace Data.Interfaces
+namespace Data.Interfaces.SupermarketConnections
 {
-    public interface IHttpConnector
+    public interface ISupermarketHttpConnector
     {
         public Task<List<Product>> SearchProducts(List<string> searchTerms);
         public string GetName();

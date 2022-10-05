@@ -1,4 +1,4 @@
-﻿using Data.Interfaces;
+﻿using Data.Interfaces.SupermarketConnections;
 using Domain;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ namespace Services
 {
     public class SearchService
     {
-        IConnectorFactory _connectorFactory;
+        ISupermarketConnectorFactory _connectorFactory;
 
-        public SearchService(IConnectorFactory connectorFactory)
+        public SearchService(ISupermarketConnectorFactory connectorFactory)
         {
             _connectorFactory = connectorFactory;
         }
@@ -22,7 +22,46 @@ namespace Services
 
             var connectorList = _connectorFactory.GetConnectors();
 
-            foreach (IHttpConnector connector in connectorList)
+            foreach (ISupermarketHttpConnector connector in connectorList)
+            {
+
+
+                try
+                {
+                    var products = await connector.SearchProducts(searchTerms);
+
+                    products = products.Where(p=> p.Name.ToLower().Split(" ").Contains(searchTerms.First().ToLower())).ToList();
+
+                    if (products.Count == 0) throw new Exception();
+
+   
+
+                    products.Sort();
+
+                    return products;
+                }
+                catch (Exception ex)
+                {
+                    var busca = "";
+                    foreach (string term in searchTerms)
+                    {
+                        busca += $"{term} ";
+                    }
+                    //Console.WriteLine($"Nenhum resultado encontrado para {busca} na conexao com {connector.GetName()}");
+                }
+
+            }
+
+            return null;
+
+        }
+
+        public async Task<List<Product>> SearchItemsInAllConnectionsWithoutRestrictionsContainingAllWords(List<string> searchTerms)
+        {
+
+            var connectorList = _connectorFactory.GetConnectors();
+
+            foreach (ISupermarketHttpConnector connector in connectorList)
             {
                 
 
@@ -33,7 +72,7 @@ namespace Services
                     if (products.Count == 0) throw new Exception();
 
                     var resposta = products.Where(p => !p.HasDiscount &&
-                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t.ToLower()))).ToList();
 
                     if (resposta.Count == 0) throw new Exception();
 
@@ -57,12 +96,12 @@ namespace Services
 
         }
 
-        public async Task<List<Product>> SearchItemsInAllConnectionsWithWordRestrictions(List<string> searchTerms, List<string> restrictions)
+        public async Task<List<Product>> SearchItemsInAllConnectionsContainingAllWordsWithWordRestrictions(List<string> searchTerms, List<string> restrictions)
         {
 
             var connectorList = _connectorFactory.GetConnectors();
 
-            foreach (IHttpConnector connector in connectorList)
+            foreach (ISupermarketHttpConnector connector in connectorList)
             {
 
 
@@ -73,7 +112,7 @@ namespace Services
                     if (products.Count == 0) throw new Exception();
 
                     var resposta = products.Where(p => !p.HasDiscount &&
-                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t))).ToList();
+                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t.ToLower()))).ToList();
 
                     if (resposta.Count == 0) throw new Exception();
 
