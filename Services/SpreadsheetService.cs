@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
 
 namespace Services
 {
@@ -22,6 +23,25 @@ namespace Services
 
             return response;
 
+
+        }
+
+        public void AppendToSpreadsheet(List<Product> products, List<string> data, string match)
+        {
+            string range = "a!A:E";
+            string id = "";
+
+            List<object> list = new List<object>
+            {
+                data[0],
+                data[1],
+                products[0].DomainName,
+                match + " " + products[0].Name,
+                products[0].Price.ToString() + "R$",
+
+            };
+
+            _connector.Append(range, id, list);
 
         }
     }

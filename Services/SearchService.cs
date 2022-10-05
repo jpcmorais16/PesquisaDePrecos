@@ -142,8 +142,9 @@ namespace Services
             int result = 0;
             foreach(string term in searchTerms)
             {
-                if(p.Name.ToLower().Split(" ").Contains(term.ToLower()))
+                if(p.Name.ToLower().Split(" ").Contains(term.ToLower()) || p.Type.ToLower().Contains(term.ToLower()))
                     result++;
+
             }
             return result;
         }

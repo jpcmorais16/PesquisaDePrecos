@@ -27,7 +27,8 @@ namespace Data.Atacadao
                 Price = Convert.ToDouble(price.price),
                 Name = full_display,
                 HasDiscount = price_statistics.Cheaper.Discount != 0,
-                DomainName = "Atacadao"
+                DomainName = "Atacadao",
+                Type = category
             };
                 
         }

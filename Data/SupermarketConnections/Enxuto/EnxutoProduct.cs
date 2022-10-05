@@ -29,7 +29,8 @@ namespace Data.Enxuto
                 Name = descricao,
                 Price = preco,
                 HasDiscount = em_oferta,
-                DomainName = "Enxuto"
+                DomainName = "Enxuto", 
+                Type = ""
             };
         }
     }

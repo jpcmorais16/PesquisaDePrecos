@@ -8,6 +8,7 @@ namespace Data.Taquaral
         public string excerpt { get; set; }
         public List<TaquaralPrice> prices { get; set; }
         public TaquaralDiscount discount { get; set; }
+        public string department { get; set; }
         
         public int CompareTo(object? obj)
         {
@@ -26,7 +27,8 @@ namespace Data.Taquaral
                 Name = excerpt,
                 Price = prices[0].price,
                 HasDiscount = discount != null && discount.value != 0,
-                DomainName = "Taquaral"
+                DomainName = "Taquaral",
+                Type = department
 
             };
         }

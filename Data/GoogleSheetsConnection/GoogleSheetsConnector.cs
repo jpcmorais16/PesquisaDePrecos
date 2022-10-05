@@ -2,6 +2,7 @@
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,18 @@ namespace Data.GoogleSheetsConnection
 
             return result;
 
+        }
+
+        public void Append(string range, string spreadsheetId, List<object> values)
+        {
+            //var range = "a!A:B";
+            var valuerange = new ValueRange();
+            //var objectList = new List<object>() { "kk", "sarve" };
+
+            valuerange.Values = new List<IList<object>>() { values };
+            var appendRequest = _sheetsService.Spreadsheets.Values.Append(valuerange, spreadsheetId, range);
+            appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
+            var response = appendRequest.Execute();
         }
 
     }

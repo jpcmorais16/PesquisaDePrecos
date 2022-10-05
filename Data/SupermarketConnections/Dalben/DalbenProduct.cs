@@ -29,7 +29,8 @@ namespace Data.Dalben
                 Name = descricao,
                 Price = preco,
                 HasDiscount = em_oferta,
-                DomainName = "Dalben"
+                DomainName = "Dalben",
+                Type = ""
             };
         }
     }

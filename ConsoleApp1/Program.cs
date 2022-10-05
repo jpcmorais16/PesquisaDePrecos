@@ -39,7 +39,7 @@ for(int i=0; i < teste.Count; i++)
 
     if(result == null)
     {
-        match = " (Match perfeito nao encontrado)" ;
+        match = " (Match imperfeito)" ;
         result = await service
         .SearchItemsInAllConnectionsWithoutRestrictions(teste[i][1]
         .Replace("(", "")
@@ -53,7 +53,10 @@ for(int i=0; i < teste.Count; i++)
         Console.WriteLine(teste[i][0] + match  + " " + teste[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
         writer.WriteLine(teste[i][0] + match + " " + teste[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
         writer.Flush();
+
+        service2.AppendToSpreadsheet(result, teste[i], match);
     }
+
    
     /*string str = "";
     for(int j=0; j < 2; j++)
