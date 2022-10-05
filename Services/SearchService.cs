@@ -29,19 +29,17 @@ namespace Services
 
                 try
                 {
-                    
+                                        
 
                     var products = await connector.SearchProducts(searchTerms[0]);
+                    var bestMatchingProducts = products.OrderByDescending(p => HowManyMatchingWords(p, searchTerms)).ToList();
 
-                    products = products.Where(p=> p.Name.ToLower().Split(" ").Contains(searchTerms.First().ToLower())).ToList();
+                    bestMatchingProducts = bestMatchingProducts.Where(p=> p.Name.ToLower().Split(" ").Contains(searchTerms.First().ToLower())).ToList();
 
-                    if (products.Count == 0) throw new Exception();
+                    if (bestMatchingProducts.Count == 0) throw new Exception();
 
-   
 
-                    products.Sort();
-
-                    return products;
+                    return bestMatchingProducts;
                 }
                 catch (Exception ex)
                 {
@@ -139,7 +137,18 @@ namespace Services
 
         }
 
+        private int HowManyMatchingWords(Product p, List<string> searchTerms)
+        {
+            int result = 0;
+            foreach(string term in searchTerms)
+            {
+                if(p.Name.ToLower().Split(" ").Contains(term.ToLower()))
+                    result++;
+            }
+            return result;
+        }
 
+        
 
     }
 }
