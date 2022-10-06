@@ -10,8 +10,8 @@ namespace Services
 {
     public class SearchService
     {
-        ISupermarketConnectorFactory _connectorFactory;
-        private string _lastMainTerm = "";
+        private ISupermarketConnectorFactory _connectorFactory;
+        private Dictionary<string, List<string>> _filteredWords = new Dictionary<string, List<string>>();
 
         public SearchService(ISupermarketConnectorFactory connectorFactory)
         {
@@ -57,10 +57,37 @@ namespace Services
 
         }
 
-        public async Task<List<Product>> SearchItemsInAllConnectionsWithoutRestrictionsContainingAllWords(List<string> searchTerms)
+        public void CreateFilter(List<List<string>> allProducts)
+        {
+            //var lastMainWord = "";
+
+            for(int i=0; i < allProducts.Count; i++)
+            {
+                var wordList = allProducts[i][1].ToLower().Split(" ");
+
+                if (!_filteredWords.Keys.Contains(wordList.First()))
+                {
+                    _filteredWords[wordList.First()] = new List<string>();
+                }
+
+                foreach(string word in wordList)
+                {
+                    var str = word.Replace("(", "").Replace(")", "").ToString().ToLower();
+
+                    if (!_filteredWords[wordList.First()].Contains(str) && word.ToCharArray().Count() > 2)
+                        _filteredWords[wordList.First()].Add(str);
+                }
+
+            }
+
+        }
+
+        public async Task<List<Product>> SearchFilteredItemsInAllConnections(List<string> searchTerms)
         {
 
             var connectorList = _connectorFactory.GetConnectors();
+            
+            
 
             foreach (ISupermarketHttpConnector connector in connectorList)
             {
@@ -73,7 +100,17 @@ namespace Services
                     if (products.Count == 0) throw new Exception();
 
                     var resposta = products.Where(p => !p.HasDiscount &&
-                    searchTerms.All(t => p.Name.Split(" ").Select(s => s.ToLower()).Contains(t.ToLower()))).ToList();
+                    searchTerms.All(t => p.Name.ToLower().Split(" ").Contains(t.ToLower()))).ToList();
+
+                    resposta = resposta.Where(p => 
+                        p.Name.ToLower().Split(" ").All(s => searchTerms.Contains(s) || !_filteredWords.Keys.Contains(s))).ToList();
+
+                    resposta = resposta.Where(p =>
+                        p.Name.ToLower().Split(" ").All(s => searchTerms.Contains(s) || !_filteredWords[searchTerms.First().ToLower()].Contains(s))).ToList();
+
+                    //resposta = resposta.Where(p =>
+                    //    !p.Name.ToLower().Split(" ").All(s => searchTerms.Contains(s) 
+                    //    || (!_filteredWords.Keys.Contains(s) && !_filteredWords[searchTerms.First().ToLower()].Contains(s)) )).ToList();
 
                     if (resposta.Count == 0) throw new Exception();
 
@@ -82,12 +119,8 @@ namespace Services
                     return resposta;
                 }
                 catch(Exception ex)
-                {
-                    var busca = "";
-                    foreach(string term in searchTerms)
-                    {
-                        busca += $"{term} ";
-                    }
+                {                  
+                    var busca = string.Join("", searchTerms);
                     Console.WriteLine($"Nenhum resultado encontrado para {busca} na conexao com {connector.GetName()}");
                 }
 

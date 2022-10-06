@@ -10,17 +10,10 @@ StreamWriter writer = new StreamWriter(@"C:\Users\Trilogo\Desktop\pesquisa.txt")
 
 
 
-var teste = service2.GetNFirstItemsFromSpreadsheet(2);
-/*try{
-    foreach (var item in result)
-    {
-        Console.WriteLine(item.DomainName + ": " + item.Name + " " + item.Price.ToString() + "R$");
-    }
-}
-catch
-{
-    return;
-}*/
+var teste = service2.GetItemsFromSpreadsheet("Banco de Dados!B5:C640", "");
+
+service.CreateFilter(teste);
+
 
 for(int i=0; i < teste.Count; i++)
 {
@@ -29,9 +22,11 @@ for(int i=0; i < teste.Count; i++)
         
     }
     var result = await service
-        .SearchItemsInAllConnectionsWithoutRestrictionsContainingAllWords(teste[i][1]
+        .SearchFilteredItemsInAllConnections(teste[i][1]
+        //.Replace("un)", "")
         .Replace("(", "")
         .Replace(")", "")
+        .ToLower()
         .Split(" ")
         .ToList());
     string match = "";
@@ -42,8 +37,10 @@ for(int i=0; i < teste.Count; i++)
         match = " (Match imperfeito)" ;
         result = await service
         .SearchItemsInAllConnectionsWithoutRestrictions(teste[i][1]
+        //.Replace("un)", "")
         .Replace("(", "")
         .Replace(")", "")
+        .ToLower()
         .Split(" ")
         .ToList());
 
@@ -54,7 +51,7 @@ for(int i=0; i < teste.Count; i++)
         writer.WriteLine(teste[i][0] + match + " " + teste[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
         writer.Flush();
 
-        service2.AppendToSpreadsheet(result, teste[i], match);
+        service2.AppendToSpreadsheet(result, teste[i], match, "d!A:E", "");
     }
 
    

@@ -14,10 +14,9 @@ namespace Services
         public List<List<string>> _spreadsheet { get; set; }
         public ISheetsConnector _connector = new GoogleSheetsConnector(@"");
 
-        public List<List<string>> GetNFirstItemsFromSpreadsheet(int N)
+        public List<List<string>> GetItemsFromSpreadsheet(string range, string id)
         {
-            string range = "Banco de Dados!B5:C640";
-            string id = "";
+            
 
             var response = _connector.ReadDataFromSpreadsheet(range, id);
 
@@ -26,10 +25,9 @@ namespace Services
 
         }
 
-        public void AppendToSpreadsheet(List<Product> products, List<string> data, string match)
+        public void AppendToSpreadsheet(List<Product> products, List<string> data, string match, string range, string id)
         {
-            string range = "a!A:E";
-            string id = "";
+            
 
             List<object> list = new List<object>
             {
@@ -37,7 +35,7 @@ namespace Services
                 data[1],
                 products[0].DomainName,
                 match + " " + products[0].Name,
-                products[0].Price.ToString() + "R$",
+                "R$" + products[0].Price.ToString(),
 
             };
 
