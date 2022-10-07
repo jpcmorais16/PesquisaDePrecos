@@ -1,4 +1,4 @@
-﻿namespace Data.Atacadao
+﻿namespace Data.SupermarketConnections.Atacadao.AtacadaoProduct
 {
     public class AtacadaoPriceStatistics
     {

@@ -17,8 +17,9 @@ namespace Data.SupermarketConnections
 
         private List<ISupermarketHttpConnector> _connectorList = new List<ISupermarketHttpConnector>
             {
-                new EnxutoConnector(),
+            
                 new TaquaralConnector(),
+                new EnxutoConnector(),     
                 new DalbenConnector(),
                 new AtacadaoConnector()
 

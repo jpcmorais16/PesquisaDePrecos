@@ -1,4 +1,4 @@
-﻿namespace Data.Dalben
+﻿namespace Data.SupermarketConnections.Dalben.DalbenJSON
 {
     public class DalbenResponse
     {

@@ -1,15 +1,15 @@
 ﻿using Domain;
 using Domain.Interfaces;
 
-namespace Data.Taquaral
+namespace Data.SupermarketConnections.Taquaral.TaquaralJSON
 {
-    public class TaquaralProduct : IProduct
+    public class TaquaralJSON : IProduct
     {
         public string excerpt { get; set; }
         public List<TaquaralPrice> prices { get; set; }
         public TaquaralDiscount discount { get; set; }
         public string department { get; set; }
-        
+
         public int CompareTo(object? obj)
         {
             throw new NotImplementedException();

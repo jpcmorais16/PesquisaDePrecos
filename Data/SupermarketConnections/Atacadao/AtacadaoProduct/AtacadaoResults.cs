@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Atacadao
+namespace Data.SupermarketConnections.Atacadao.AtacadaoProduct
 {
     public class AtacadaoResults
     {
-        public List<AtacadaoProduct> products { get; set; }
+        public List<AtacadaoJSON> products { get; set; }
     }
 }

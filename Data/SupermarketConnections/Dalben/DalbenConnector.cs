@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using Data.Interfaces.SupermarketConnections;
+using Data.SupermarketConnections.Dalben.DalbenJSON;
 
 namespace Data.Dalben
 {
@@ -31,14 +32,13 @@ namespace Data.Dalben
             return _lastSearch;
         }
 
-        public async Task<List<Product>> SearchProducts(string mainTerm)
+        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
         {
-            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
-                return _lastSearch;
+           
 
             HttpClient httpClient = new HttpClient();
 
-            string searchLink = _baseLink + mainTerm + "?";
+            string searchLink = _baseLink + CreateQuery(searchTerms);
 
             var token = await GetTokenAsync(httpClient);
 
@@ -48,7 +48,7 @@ namespace Data.Dalben
 
             var response = JsonConvert.DeserializeObject<DalbenResponse>(getResult);
 
-            _lastMainTerm = mainTerm;
+            _lastMainTerm = searchTerms.First();
             _lastSearch = response.data.produtos.Select(p => p.GetProduct()).ToList();
 
             return _lastSearch;
@@ -68,7 +68,34 @@ namespace Data.Dalben
             query += "?";
             return query;
         }
+        public async Task<List<Product>> SearchProductsOptimized(List<string> terms)
+        {
+            if (_lastMainTerm != null && terms.First().ToLower().Equals(_lastMainTerm.ToLower()))
+                return _lastSearch;
+
+            HttpClient httpClient = new HttpClient();
+
+            string searchLink = _baseLink + CreateQuery(terms);
+
+            var token = await GetTokenAsync(httpClient);
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var getResult = await httpClient.GetStringAsync(searchLink);
+
+            var response = JsonConvert.DeserializeObject<DalbenResponse>(getResult);
+
+            _lastMainTerm = terms.First();
+            _lastSearch = response.data.produtos.Select(p => p.GetProduct()).ToList();
+
+            return _lastSearch;
+
+        }
+
+
+
         
+
         private async Task<string> GetTokenAsync(HttpClient httpClient)
         {
            

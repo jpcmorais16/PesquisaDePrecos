@@ -1,4 +1,4 @@
-﻿namespace Data.Taquaral
+﻿namespace Data.SupermarketConnections.Taquaral.TaquaralJSON
 {
     public class TaquaralPrice
     {

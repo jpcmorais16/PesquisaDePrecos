@@ -1,4 +1,5 @@
 ﻿using Data.Interfaces.SupermarketConnections;
+using Data.SupermarketConnections.Taquaral.TaquaralJSON;
 using Domain;
 using Newtonsoft.Json;
 using System;
@@ -30,13 +31,13 @@ namespace Data.Taquaral
             return "Taquaral";
         }
 
-        public async Task<List<Product>> SearchProducts(string mainTerm)
+        public async Task<List<Product>> SearchProductsOptimized(List<string> terms)
         {
-            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
+            if (_lastMainTerm != null && terms.First().ToLower().Equals(_lastMainTerm.ToLower()))
                 return _lastSearch;
 
             HttpClient httpClient = new HttpClient();
-            string search = _baseLink + mainTerm;
+            string search = _baseLink + CreateQuery(terms);
 
             var header = new
             {
@@ -55,7 +56,7 @@ namespace Data.Taquaral
 
             var response = JsonConvert.DeserializeObject<TaquaralResponse>(getResult);
 
-            _lastMainTerm = mainTerm;
+            _lastMainTerm = terms.First();
             _lastSearch =  response.products.Select(p => p.GetProduct()).ToList();
 
             return _lastSearch;
@@ -73,5 +74,35 @@ namespace Data.Taquaral
             return query;
 
         }
+        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
+        {
+       
+            HttpClient httpClient = new HttpClient();
+            string search = _baseLink + CreateQuery(searchTerms);
+
+            var header = new
+            {
+                Location = new { Latitude = -23.563776, Longitude = -46.6623916 },
+                IdClientAdress = 0,
+                IsDelivery = false,
+                IdLoja = 628,
+                IdRede = 556,
+                DateBuild = DateTime.Now
+            };
+
+            var headerJson = JsonConvert.SerializeObject(header);
+
+            httpClient.DefaultRequestHeaders.Add("sm-token", headerJson);
+            var getResult = await httpClient.GetStringAsync(search);
+
+            var response = JsonConvert.DeserializeObject<TaquaralResponse>(getResult);
+
+            _lastMainTerm = searchTerms.First();
+            _lastSearch = response.products.Select(p => p.GetProduct()).ToList();
+
+            return _lastSearch;
+        }
+
+       
     }
 }

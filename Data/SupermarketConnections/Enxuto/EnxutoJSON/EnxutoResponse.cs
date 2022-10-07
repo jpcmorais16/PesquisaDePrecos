@@ -1,4 +1,4 @@
-﻿namespace Data.Enxuto
+﻿namespace Data.SupermarketConnections.Enxuto.EnxutoJSON
 {
     public class EnxutoResponse
     {

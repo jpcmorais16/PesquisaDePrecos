@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Atacadao
+namespace Data.SupermarketConnections.Atacadao.AtacadaoProduct
 {
-    public class AtacadaoProduct : IProduct
+    public class AtacadaoJSON : IProduct
     {
         [Key]
         public int pk { get; set; }
@@ -30,13 +30,13 @@ namespace Data.Atacadao
                 DomainName = "Atacadao",
                 Type = category
             };
-                
+
         }
 
         public int CompareTo(object? obj)
         {
             if (obj == null) return -1;
-            AtacadaoProduct product = obj as AtacadaoProduct;
+            AtacadaoJSON product = obj as AtacadaoJSON;
 
             return Convert.ToDouble(getPrice()) < Convert.ToDouble(product.getPrice()) ? -1 : 1;
         }

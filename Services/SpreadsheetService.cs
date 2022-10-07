@@ -12,7 +12,7 @@ namespace Services
     public class SpreadsheetService
     {
         public List<List<string>> _spreadsheet { get; set; }
-        public ISheetsConnector _connector = new GoogleSheetsConnector(@"");
+        public ISheetsConnector _connector = new GoogleSheetsConnector(@"C:\Users\Trilogo\Desktop\credentials\credentials.json");
 
         public List<List<string>> GetItemsFromSpreadsheet(string range, string id)
         {
@@ -36,6 +36,8 @@ namespace Services
                 products[0].DomainName,
                 match + " " + products[0].Name,
                 "R$" + products[0].Price.ToString(),
+                data[0],
+                match.Equals("") ? products[0].Name : "",
 
             };
 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Domain;
 using Data.Interfaces.SupermarketConnections;
+using Data.SupermarketConnections.Atacadao.AtacadaoProduct;
 
 namespace Data.Atacadao
 {
@@ -26,20 +27,38 @@ namespace Data.Atacadao
             return "Atacadao";
         }
 
-        public async Task<List<Product>> SearchProducts(string mainTerm)
+        public async Task<List<Product>> SearchProducts(List<string> searchTerms)
         {
-            if (_lastMainTerm != null && mainTerm.ToLower().Equals(_lastMainTerm.ToLower()))
-                return _lastSearch;
 
             HttpClient httpClient = new HttpClient();
 
-            string search = _baseLink + "q=" + mainTerm + "&page=1";
+            string search = _baseLink + CreateQuery(searchTerms);
 
             var getResult = await httpClient.GetStringAsync(search);
 
             var response = JsonConvert.DeserializeObject<AtacadaoResponse>(getResult);
 
-            _lastMainTerm = mainTerm;
+            _lastMainTerm = searchTerms.First();
+            _lastSearch = response.results.Select(p => p.GetProduct()).ToList();
+
+            return _lastSearch;
+
+
+        }
+        public async Task<List<Product>> SearchProductsOptimized(List<string> terms)
+        {
+            if (_lastMainTerm != null && terms.First().ToLower().Equals(_lastMainTerm.ToLower()))
+                return _lastSearch;
+
+            HttpClient httpClient = new HttpClient();
+
+            string search = _baseLink + CreateQuery(terms);
+
+            var getResult = await httpClient.GetStringAsync(search);
+
+            var response = JsonConvert.DeserializeObject<AtacadaoResponse>(getResult);
+
+            _lastMainTerm = terms.First();
             _lastSearch = response.results.Select(p => p.GetProduct()).ToList();
 
             return _lastSearch;

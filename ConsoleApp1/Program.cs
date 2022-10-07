@@ -34,15 +34,19 @@ for(int i=0; i < teste.Count; i++)
 
     if(result == null)
     {
-        match = " (Match imperfeito)" ;
-        result = await service
-        .SearchItemsInAllConnectionsWithoutRestrictions(teste[i][1]
-        //.Replace("un)", "")
-        .Replace("(", "")
-        .Replace(")", "")
-        .ToLower()
-        .Split(" ")
-        .ToList());
+        try
+        {
+            match = " (Match imperfeito)";
+            result = await service
+            .SearchItemsInAllConnectionsWithoutRestrictions(teste[i][1]
+            .Replace("un)", "")
+            .Replace("(", "")
+            .Replace(")", "")
+            .ToLower()
+            .Split(" ")
+            .ToList());
+        }
+        catch (Exception e) { }
 
     }
 
@@ -51,7 +55,7 @@ for(int i=0; i < teste.Count; i++)
         writer.WriteLine(teste[i][0] + match + " " + teste[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
         writer.Flush();
 
-        service2.AppendToSpreadsheet(result, teste[i], match, "d!A:E", "");
+        service2.AppendToSpreadsheet(result, teste[i], match, "", "");
     }
 
    
