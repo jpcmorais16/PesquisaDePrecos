@@ -5,7 +5,7 @@ using Data.SupermarketConnections;
 var service = new SearchService(new SupermarketConnectorFactory());
 
 var service2 = new SpreadsheetService();
-StreamWriter writer = new StreamWriter(@"C:\Users\Trilogo\Desktop\pesquisa.txt");
+StreamWriter writer = new StreamWriter(@"");
 
 
 
