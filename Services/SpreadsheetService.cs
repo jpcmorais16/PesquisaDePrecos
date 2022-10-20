@@ -1,5 +1,4 @@
-﻿using Data.Interfaces;
-using Data.GoogleSheetsConnection;
+﻿using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +10,13 @@ namespace Services
 {
     public class SpreadsheetService
     {
-        public List<List<string>> _spreadsheet { get; set; }
-        public ISheetsConnector _connector = new GoogleSheetsConnector(@"C:\Users\Trilogo\Desktop\credentials\credentials.json");
+
+        private readonly ISheetsConnector _connector;
+
+        public SpreadsheetService(ISheetsConnector connector)
+        {
+            _connector = connector;
+        }
 
         public List<List<string>> GetItemsFromSpreadsheet(string range, string id)
         {

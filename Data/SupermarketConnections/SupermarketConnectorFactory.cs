@@ -1,9 +1,8 @@
 ﻿using Data.Atacadao;
 using Data.Dalben;
 using Data.Enxuto;
-using Data.Interfaces;
-using Data.Interfaces.SupermarketConnections;
 using Data.Taquaral;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

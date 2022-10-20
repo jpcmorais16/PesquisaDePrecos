@@ -72,6 +72,19 @@
         "runtime": {
           "bin/placeholder/Domain.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -209,6 +222,11 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -216,7 +234,8 @@
       "Domain >= 1.0.0",
       "Google.Apis.Auth >= 1.57.0",
       "Google.Apis.Sheets.v4 >= 1.57.0.2826",
-      "Newtonsoft.Json >= 13.0.1"
+      "Newtonsoft.Json >= 13.0.1",
+      "Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -248,6 +267,9 @@
           "projectReferences": {
             "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Services\\Services.csproj"
             }
           }
         }

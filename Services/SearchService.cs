@@ -1,4 +1,4 @@
-﻿using Data.Interfaces.SupermarketConnections;
+﻿using Services.Interfaces;
 using Domain;
 using System;
 using System.Collections.Generic;

@@ -1,11 +1,12 @@
 ﻿using Services;
 using Data;
 using Data.SupermarketConnections;
+using Data.GoogleSheetsConnection;
 
 var service = new SearchService(new SupermarketConnectorFactory());
 
-var service2 = new SpreadsheetService();
-StreamWriter writer = new StreamWriter(@"");
+var service2 = new SpreadsheetService(new GoogleSheetsConnector(@"C:\Users\Trilogo\Desktop\credentials"));
+StreamWriter writer = new StreamWriter(@"C:\Users\Trilogo\Desktop\pesquisa.txt");
 
 
 

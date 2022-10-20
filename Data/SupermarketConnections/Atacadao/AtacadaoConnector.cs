@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Domain;
-using Data.Interfaces.SupermarketConnections;
+using Services.Interfaces;
 using Data.SupermarketConnections.Atacadao.AtacadaoProduct;
 
 namespace Data.Atacadao

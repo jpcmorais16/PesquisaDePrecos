@@ -1,5 +1,4 @@
-﻿using Data.Interfaces.SupermarketConnections;
-using Data.SupermarketConnections.Taquaral.TaquaralJSON;
+﻿using Data.SupermarketConnections.Taquaral.TaquaralJSON;
 using Domain;
 using Newtonsoft.Json;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Services.Interfaces;
 
 namespace Data.Taquaral
 {

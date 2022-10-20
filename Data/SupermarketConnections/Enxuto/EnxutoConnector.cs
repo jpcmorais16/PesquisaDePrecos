@@ -1,5 +1,4 @@
-﻿using Data.Interfaces.SupermarketConnections;
-using Data.SupermarketConnections.Enxuto.EnxutoJSON;
+﻿using Data.SupermarketConnections.Enxuto.EnxutoJSON;
 using Domain;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Services.Interfaces;
 
 namespace Data.Enxuto
 {

@@ -70,7 +70,8 @@
           "Domain": "1.0.0",
           "Google.Apis.Auth": "1.57.0",
           "Google.Apis.Sheets.v4": "1.57.0.2826",
-          "Newtonsoft.Json": "13.0.1"
+          "Newtonsoft.Json": "13.0.1",
+          "Services": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Data.dll": {}
@@ -93,7 +94,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Data": "1.0.0"
+          "Domain": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.dll": {}

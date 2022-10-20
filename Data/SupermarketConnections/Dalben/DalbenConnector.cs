@@ -8,7 +8,7 @@ using Domain;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
-using Data.Interfaces.SupermarketConnections;
+using Services.Interfaces;
 using Data.SupermarketConnections.Dalben.DalbenJSON;
 
 namespace Data.Dalben
