@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj": {}
+    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj": {
+    "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Trilogo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Trilogo\\AppData\\Roaming\\NuGet\\NuGet.Config",

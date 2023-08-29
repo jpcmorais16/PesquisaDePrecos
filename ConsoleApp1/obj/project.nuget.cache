@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "he5y6qhic4TZDyxlmZ4eK0fuwAsGIVddH3i0VmSfpH+E/pHmPaZekB2vER8o9ri/PFzUmx22bfgn0rRZM8GM+A==",
+  "dgSpecHash": "qvlIr9tBDT7lZmfXZ2PV3IqtwedxNUpy3WBF6ewEpUy3JAg9crzq8KEU27zXqBSGLHzb9WUzDa97BeVVhCOtNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis\\1.57.0\\google.apis.1.57.0.nupkg.sha512",
     "C:\\Users\\Trilogo\\.nuget\\packages\\google.apis.auth\\1.57.0\\google.apis.auth.1.57.0.nupkg.sha512",

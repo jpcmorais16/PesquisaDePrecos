@@ -263,11 +263,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\Trilogo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Trilogo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -284,11 +284,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Data\\Data.csproj"
+            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Data\\Data.csproj"
             },
-            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Services\\Services.csproj": {
-              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Services\\Services.csproj"
+            "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Services\\Services.csproj"
             }
           }
         }

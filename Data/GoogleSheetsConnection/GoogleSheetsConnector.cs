@@ -18,12 +18,10 @@ namespace Data.GoogleSheetsConnection
 
         public GoogleSheetsConnector(string credPath)
         {
-            //string credPath = @"C:\Users\Trilogo\Desktop\credentials\credentials.json";
+
 
             var json = File.ReadAllText(credPath);
-            PersonalServiceAccountCred cr = JsonConvert.DeserializeObject<PersonalServiceAccountCred>(json); // "personal" service account credential
-
-            // Create an explicit ServiceAccountCredential credential
+            PersonalServiceAccountCred cr = JsonConvert.DeserializeObject<PersonalServiceAccountCred>(json);
             var xCred = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(cr.client_email)
             {
                 Scopes = new[] {
@@ -31,7 +29,7 @@ namespace Data.GoogleSheetsConnection
             }
             }.FromPrivateKey(cr.private_key));
 
-            // Create the service
+
             _sheetsService = new SheetsService(
                 new BaseClientService.Initializer()
                 {
@@ -42,8 +40,7 @@ namespace Data.GoogleSheetsConnection
 
         public List<List<string>> ReadDataFromSpreadsheet(string range, string spreadsheetId)
         {
-            //var range = "a!A1:A2";
-            //"1_7qcTh67UXl3_kV-osvVJts8Owv-PUt5KuIdJnGaPXc"
+
             var request = _sheetsService.Spreadsheets.Values.Get(spreadsheetId, range);
             var response = request.Execute();
             var a = response.Values[0];

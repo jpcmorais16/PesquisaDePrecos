@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+IwInZHvEn7DXmNyLK6ESFWpRjX80aSNM+vrpiLZVrCvjUoCp+WY2r8etWNSlVeXZYvzd1Z98v8q1PS7BWfLrA==",
+  "dgSpecHash": "xnf3JdbI/uyC22SSU0/jiR7hDuIMsPVEvvrD5blo/ppejsXO8LkIX3qrnejadPTxUAxNZ7s+8Pm/lv43cpU1Ig==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecos\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Trilogo\\Desktop\\PesquisaDePrecosGit\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

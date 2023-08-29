@@ -20,19 +20,13 @@ namespace Services
 
         public List<List<string>> GetItemsFromSpreadsheet(string range, string id)
         {
-            
-
             var response = _connector.ReadDataFromSpreadsheet(range, id);
 
             return response;
-
-
         }
 
         public void AppendToSpreadsheet(List<Product> products, List<string> data, string match, string range, string id)
         {
-            
-
             List<object> list = new List<object>
             {
                 data[0],
@@ -46,7 +40,6 @@ namespace Services
             };
 
             _connector.Append(range, id, list);
-
         }
     }
 }
