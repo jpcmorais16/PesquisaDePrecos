@@ -1,14 +1,13 @@
 ﻿using Services;
-using Data;
 using Data.SupermarketConnections;
 using Data.GoogleSheetsConnection;
 
 var searchService = new SearchService(new SupermarketConnectorFactory());
 
-var spreadsheetService = new SpreadsheetService(new GoogleSheetsConnector(@"C:\Users\Trilogo\Desktop\credentials\credentials.json"));
+var spreadsheetService = new SpreadsheetService(new GoogleSheetsConnector(@""));
 StreamWriter writer = new StreamWriter(@"C:\Users\Trilogo\Desktop\pesquisa.txt");
 
-var items = spreadsheetService.GetItemsFromSpreadsheet("Banco de Dados!B5:C640", "1NNtrAFJdMruHdYoDyV61itwkv-gu0uezyHAyVcokdC4");
+var items = spreadsheetService.GetItemsFromSpreadsheet("Banco de Dados!B5:C640", "");
 
 searchService.CreateFilter(items);
 
@@ -22,9 +21,14 @@ for(int i=0; i < items.Count; i++)
         .ToLower()
         .Split(" ")
         .ToList());
+
+    if (i >= 21)
+    {
+        
+    }
+    
     string match = "";
     
-
     if(result == null)
     {
         try
@@ -43,10 +47,10 @@ for(int i=0; i < items.Count; i++)
     }
 
     if(result != null) { 
-        Console.WriteLine(items[i][0] + match  + " " + items[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
-        writer.WriteLine(items[i][0] + match + " " + items[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price.ToString() + "R$");
+        Console.WriteLine(items[i][0] + match  + " " + items[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price + "R$");
+        writer.WriteLine(items[i][0] + match + " " + items[i][1] + ": " + result[0].DomainName + " " + result[0].Name + " " + result[0].Price + "R$");
         writer.Flush();
 
-        spreadsheetService.AppendToSpreadsheet(result, items[i], match, "b!A:G", "1nXi0nRgwnIpXzB_6XzYKoRVp3A5vZsZoJTr7EITsKaQ");
+        spreadsheetService.AppendToSpreadsheet(result, items[i], match, "d!A:G", "");
     }
 }

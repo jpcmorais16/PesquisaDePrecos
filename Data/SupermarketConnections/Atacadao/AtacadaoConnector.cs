@@ -42,8 +42,6 @@ namespace Data.Atacadao
             _lastSearch = response.results.Select(p => p.GetProduct()).ToList();
 
             return _lastSearch;
-
-
         }
         public async Task<List<Product>> SearchProductsOptimized(List<string> terms)
         {
@@ -62,8 +60,6 @@ namespace Data.Atacadao
             _lastSearch = response.results.Select(p => p.GetProduct()).ToList();
 
             return _lastSearch;
-
-
         }
 
 
@@ -80,7 +76,5 @@ namespace Data.Atacadao
             return query;
 
         }
-
-
     }
 }
